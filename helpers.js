@@ -59,13 +59,16 @@ function handleLocation(sender_psid, received_message) {
                 callSendAPI(sender_psid, locationMessage);
             }
 
-            // Celsius to Kelvin conversion
-            const temperature = Math.round(weatherData.main.temp - 273.15);
+            // Kelvin to Celsius conversion
+            const celsius = Math.round(weatherData.main.temp - 273.15);
+
+            // Kelvin to Fahrenheit conversion
+            const fahrenheit = Math.round((weatherData.main.temp - 273.15) * 9 / 5 + 32);
 
             await delay(1000);
 
             const weatherMessage1 = {
-                "text": `The weather in ${location.charAt(0).toUpperCase() + location.slice(1)}, which is located in ${weatherData.sys.country}, is ${temperature}°C with ${weatherData.weather[0].description}.`
+                "text": `The weather in ${location.charAt(0).toUpperCase() + location.slice(1)}, ${weatherData.sys.country} is ${celsius}°C or ${fahrenheit}°F with ${weatherData.weather[0].description}.`
             }
             callSendAPI(sender_psid, weatherMessage1);
 
