@@ -1,7 +1,7 @@
 'use strict';
 
 // Imports from helpers.js
-const { callSendAPI, handlePostback, handleLocation, delay } = require('./helpers');
+const { callSendAPI, handlePostback, handleLocation, getUserProfile, delay } = require('./helpers');
 
 // Import dependencies
 const
@@ -41,23 +41,6 @@ app.post('/webhook', (req, res) => {
     }
 });
 
-app.get('/webhook', (req, res) => {
-
-    let mode = req.query['hub.mode'];
-    let token = req.query['hub.verify_token'];
-    let challenge = req.query['hub.challenge'];
-
-    if (mode && token) {
-        if (mode === 'subscribe' && token === process.env.VERIFY_TOKEN) {
-            console.log('WEBHOOK_VERIFIED');
-            res.status(200).send(challenge);
-        } else {
-            res.sendStatus(403);
-        }
-    }
-
-});
-
 async function handleMessage(sender_psid, received_message) {
     if (received_message.text) {
         if (received_message.quick_replies) {
@@ -66,8 +49,11 @@ async function handleMessage(sender_psid, received_message) {
             const userMessage = received_message.text;
 
             if (userMessage.includes('hello') || userMessage.includes('hi') || userMessage.includes('Hello') || userMessage.includes('Hi')) {
+                const userProfile = await getUserProfile(sender_psid);
+                const firstName = userProfile.first_name;
+
                 const response1 = {
-                    "text": "Hello, I'm a bot that will provide you weather information of your desired location."
+                    "text": `Hello, ${firstName}! I'm a bot that will provide you weather information of your desired location.`
                 };
                 callSendAPI(sender_psid, response1);
 

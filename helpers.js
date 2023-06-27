@@ -26,6 +26,28 @@ function callSendAPI(sender_psid, response) {
     });
 }
 
+function getUserProfile(sender_psid) {
+    return new Promise((resolve, reject) => {
+        const options = {
+            uri: `https://graph.facebook.com/${sender_psid}`,
+            qs: {
+                access_token: process.env.PAGE_ACCESS_TOKEN,
+                fields: 'first_name'
+            },
+            method: 'GET'
+        };
+
+        request(options, (error, response, body) => {
+            if (!error && response.statusCode === 200) {
+                const userProfile = JSON.parse(body);
+                resolve(userProfile);
+            } else {
+                reject(error);
+            }
+        });
+    });
+}
+
 function handlePostback(sender_psid, received_postback) {
     const payload = received_postback.payload;
 
@@ -36,7 +58,7 @@ function handlePostback(sender_psid, received_postback) {
         callSendAPI(sender_psid, response);
     } else if (payload === "OTHER_LOCATIONS_NO") {
         const response = {
-            "text": "Okay, if you want to use the bot again, just send 'hi' or 'hello'!"
+            "text": `Okay. If you want to use the bot again, just send 'hi' or 'hello'!`
         };
         callSendAPI(sender_psid, response);
     }
@@ -94,7 +116,7 @@ function handleLocation(sender_psid, received_message) {
             console.error("Unable to send message:" + error);
 
             const errorMessage = {
-                "text": `There's no availabe weather data for ${location}.`
+                "text": `There's no available weather data for ${location}.`
             };
 
             callSendAPI(sender_psid, errorMessage);
@@ -108,6 +130,7 @@ function delay(milliseconds) {
 
 module.exports = {
     callSendAPI,
+    getUserProfile,
     handlePostback,
     handleLocation,
     delay
