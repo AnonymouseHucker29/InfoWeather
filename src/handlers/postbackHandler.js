@@ -1,4 +1,4 @@
-const callSendHandler = require("./callSendHandler");
+const callSendHandler = require("./callSendHandler.js");
 
 function postbackHandler(sender_psid, received_postback) {
     const payload = received_postback.payload;

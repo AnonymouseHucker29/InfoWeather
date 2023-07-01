@@ -1,6 +1,6 @@
 const request = require('request');
-const callSendHandler = require('./callSendHandler');
-const delayHandler = require('./delayHandler');
+const callSendHandler = require('./callSendHandler.js');
+const delayHandler = require('./delayHandler.js');
 
 require('dotenv').config();
 

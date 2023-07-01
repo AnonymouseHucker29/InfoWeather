@@ -1,9 +1,8 @@
 'use strict';
 
-const postbackHandler = require('./handlers/postbackHandler'),
-    messageHandler = require('./handlers/messageHandler');
+const postbackHandler = require('./handlers/postbackHandler.js'),
+    messageHandler = require('./handlers/messageHandler.js');
 
-// Import dependencies
 const
     express = require('express'),
     body_parser = require('body-parser'),

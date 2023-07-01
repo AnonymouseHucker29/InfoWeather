@@ -1,7 +1,7 @@
-const weatherHandler = require("./weatherHandler"),
-    postbackHandler = require("./postbackHandler"),
-    callSendHandler = require("./callSendHandler"),
-    delayHandler = require("./delayHandler");
+const weatherHandler = require("./weatherHandler.js"),
+    postbackHandler = require("./postbackHandler.js"),
+    callSendHandler = require("./callSendHandler.js"),
+    delayHandler = require("./delayHandler.js");
 
 async function messageHandler(sender_psid, received_message) {
     if (received_message.text) {
