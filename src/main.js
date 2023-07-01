@@ -1,6 +1,5 @@
 'use strict';
 
-// Imports from helpers.js
 const postbackHandler = require('./handlers/postbackHandler'),
     messageHandler = require('./handlers/messageHandler');
 
