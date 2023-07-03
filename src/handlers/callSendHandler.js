@@ -26,6 +26,4 @@ function callSendHandler(sender_psid, response) {
     });
 }
 
-module.exports = {
-    callSendHandler
-};
+module.exports.callSendHandler = callSendHandler;

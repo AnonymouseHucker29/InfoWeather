@@ -1,6 +1,6 @@
 const request = require('request');
-const callSendHandler = require('./callSendHandler.js');
-const delayHandler = require('./delayHandler.js');
+const { callSendHandler } = require('./callSendHandler');
+const { delayHandler } = require('./delayHandler');
 
 require('dotenv').config();
 
@@ -64,6 +64,4 @@ function weatherHandler(sender_psid, received_message) {
     });
 }
 
-module.exports = {
-    weatherHandler
-};
+module.exports.weatherHandler = weatherHandler;

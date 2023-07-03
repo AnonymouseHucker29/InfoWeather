@@ -1,7 +1,8 @@
-const weatherHandler = require("./weatherHandler.js"),
-    postbackHandler = require("./postbackHandler.js"),
-    callSendHandler = require("./callSendHandler.js"),
-    delayHandler = require("./delayHandler.js");
+const { weatherHandler } = require("./weatherHandler");
+const { postbackHandler } = require("./postbackHandler");
+const { callSendHandler } = require("./callSendHandler");
+const { delayHandler } = require("./delayHandler");
+const { userProfileHandler } = require("./userProfileHandler");
 
 async function messageHandler(sender_psid, received_message) {
     if (received_message.text) {
@@ -11,7 +12,7 @@ async function messageHandler(sender_psid, received_message) {
             const userMessage = received_message.text;
 
             if (userMessage.includes('hello') || userMessage.includes('hi') || userMessage.includes('Hello') || userMessage.includes('Hi')) {
-                const userProfile = await getUserProfile(sender_psid);
+                const userProfile = await userProfileHandler(sender_psid);
                 const firstName = userProfile.first_name;
 
                 const response1 = {
@@ -47,6 +48,4 @@ async function messageHandler(sender_psid, received_message) {
     }
 }
 
-module.exports = {
-    messageHandler
-};
+module.exports.messageHandler = messageHandler;

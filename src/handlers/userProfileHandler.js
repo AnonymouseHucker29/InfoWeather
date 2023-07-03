@@ -24,6 +24,4 @@ function userProfileHandler(sender_psid) {
     });
 }
 
-module.exports = {
-    userProfileHandler
-};
+module.exports.userProfileHandler = userProfileHandler;
