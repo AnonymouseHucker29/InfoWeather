@@ -56,7 +56,7 @@ function weatherHandler(sender_psid, received_message) {
             console.error("Unable to send message:" + error);
 
             const errorMessage = {
-                "text": `There's no available weather data for ${location}.`
+                "text": `There's no available weather data for "${location}".`
             };
 
             callSendHandler(sender_psid, errorMessage);
