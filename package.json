@@ -1,6 +1,6 @@
 {
   "name": "infoweather",
-  "version": "1.0.5",
+  "version": "1.0.7",
   "description": "Real-time weather information for your location provided by a Facebook Messenger bot.",
   "main": "src/main.js",
   "scripts": {
