@@ -12,7 +12,7 @@ async function messageHandler(sender_psid, received_message) {
             } else {
                 const userMessage = received_message.text;
 
-                if (userMessage.includes('hello') || userMessage.includes('hi') || userMessage.includes('Hello') || userMessage.includes('Hi')) {
+                if (userMessage.toLowerCase().includes('hello') || userMessage.toLowerCase().includes('hi')) {
                     const userProfile = await userProfileHandler(sender_psid);
                     const firstName = userProfile.first_name;
 
