@@ -29,7 +29,7 @@ function weatherHandler(sender_psid, received_message) {
 
             await delayHandler(1000);
 
-            const desc = weatherData.weather[0].description; 
+            const desc = weatherData.weather[0].description;
 
             const weatherMessage1 = {
                 "text": `The weather in ${location.charAt(0).toUpperCase() + location.slice(1)}, ${weatherData.sys.country} is ${celsius}°C or ${fahrenheit}°F having ${desc}.`
