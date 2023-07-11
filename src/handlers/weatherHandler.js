@@ -1,18 +1,25 @@
-const request = require('request');
-const { callSendHandler } = require('./callSendHandler');
-const { delayHandler } = require('./delayHandler');
+import { callSendHandler } from './callSendHandler.js'
+import { delayHandler } from './delayHandler.js'
+import { markMessageAsSeen, showTypingIndicator } from './typingAndSeenIndicator.js'
+import dotenv from 'dotenv'
 
-require('dotenv').config();
+dotenv.config();
 
-function weatherHandler(sender_psid, received_message) {
-    var location = received_message;
+export async function weatherHandler(sender_psid, received_message, message_id) {
+    let location = received_message;
 
     const apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(location)}&appid=${process.env.OPENWEATHERMAP_API_KEY}`;
-    request(apiUrl, async (error, response, body) => {
-        if (!error && response.statusCode === 200) {
-            const weatherData = JSON.parse(body);
 
+    try {
+        const response = await fetch(apiUrl);
+        const weatherData = await response.json();
+
+        if (response.status === 200) {
             if (location.toLowerCase() !== weatherData.name.toLowerCase()) {
+
+                await markMessageAsSeen(sender_psid, message_id);
+                await showTypingIndicator(sender_psid, received_message.mid);
+
                 location = weatherData.name;
 
                 const locationMessage = {
@@ -29,14 +36,18 @@ function weatherHandler(sender_psid, received_message) {
 
             await delayHandler(1000);
 
+            await showTypingIndicator(sender_psid, received_message.mid);
+
             const desc = weatherData.weather[0].description;
 
             const weatherMessage1 = {
-                "text": `The weather in ${location.charAt(0).toUpperCase() + location.slice(1)}, ${weatherData.sys.country} is ${celsius}°C or ${fahrenheit}°F having ${desc}.`
-            }
+                "text": `The weather in ${weatherData.name}, ${weatherData.sys.country} is ${celsius}°C or ${fahrenheit}°F having ${desc}.`
+            };
             callSendHandler(sender_psid, weatherMessage1);
 
             await delayHandler(1000);
+
+            await showTypingIndicator(sender_psid, received_message.mid);
 
             const weatherMessage2 = {
                 "text": 'Do you want me to provide weather info for another location?',
@@ -55,7 +66,10 @@ function weatherHandler(sender_psid, received_message) {
             };
             callSendHandler(sender_psid, weatherMessage2);
         } else {
-            console.error("Unable to send message:" + error);
+
+            await showTypingIndicator(sender_psid, received_message.mid);
+
+            console.error("Unable to send message:" + response.status);
 
             const errorMessage = {
                 "text": `There's no available weather data for "${location}".`
@@ -63,7 +77,7 @@ function weatherHandler(sender_psid, received_message) {
 
             callSendHandler(sender_psid, errorMessage);
         }
-    });
+    } catch (error) {
+        console.error("Unable to send message:", error);
+    }
 }
-
-module.exports.weatherHandler = weatherHandler;

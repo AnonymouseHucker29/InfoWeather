@@ -1,27 +1,30 @@
-const request = require('request');
+import dotenv from 'dotenv';
 
-require('dotenv').config();
+dotenv.config();
 
-function userProfileHandler(sender_psid) {
-    return new Promise((resolve, reject) => {
-        const options = {
-            uri: `https://graph.facebook.com/${sender_psid}`,
-            qs: {
-                access_token: process.env.PAGE_ACCESS_TOKEN,
-                fields: 'first_name'
-            },
-            method: 'GET'
-        };
+export function userProfileHandler(sender_psid) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const options = {
+                uri: `https://graph.facebook.com/${sender_psid}`,
+                qs: {
+                    access_token: process.env.PAGE_ACCESS_TOKEN,
+                    fields: 'first_name'
+                },
+                method: 'GET'
+            };
 
-        request(options, (error, response, body) => {
-            if (!error && response.statusCode === 200) {
-                const userProfile = JSON.parse(body);
+            const url = `${options.uri}?access_token=${options.qs.access_token}&fields=${options.qs.fields}`;
+
+            const response = await fetch(url);
+            const userProfile = await response.json();
+
+            if (response.ok) {
                 resolve(userProfile);
-            } else {
-                reject(error);
             }
-        });
+        } catch (error) {
+            console.error('Error:', error);
+            reject(error);
+        }
     });
 }
-
-module.exports.userProfileHandler = userProfileHandler;
