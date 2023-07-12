@@ -22,7 +22,7 @@ export function webhookHandler(req, res) {
                     await messageHandler(sender_psid, received_message);
                 }
             } else if (webhook_event.postback) {
-                postbackHandler(sender_psid, webhook_event.postback);
+                await postbackHandler(sender_psid, webhook_event.postback);
             }
         });
 

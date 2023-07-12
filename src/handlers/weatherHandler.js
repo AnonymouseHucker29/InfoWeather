@@ -36,6 +36,7 @@ export async function weatherHandler(sender_psid, received_message, message_id) 
 
             await delayHandler(1000);
 
+            await markMessageAsSeen(sender_psid, message_id);
             await showTypingIndicator(sender_psid, received_message.mid);
 
             const desc = weatherData.weather[0].description;
@@ -47,6 +48,7 @@ export async function weatherHandler(sender_psid, received_message, message_id) 
 
             await delayHandler(1000);
 
+            await markMessageAsSeen(sender_psid, message_id);
             await showTypingIndicator(sender_psid, received_message.mid);
 
             const weatherMessage2 = {
