@@ -1,10 +1,14 @@
 # <div align="center">InfoWeather</div>
 
-*<div align="center">A Facebook Messenger bot that provides weather information from OpenWeatherMap based on the user's inputted of location.</div>*
+*<div align="center">A Facebook Messenger bot that provides weather information from OpenWeatherMap based on the user's given location.</div>*
+
+<div align="center">
+<img src="https://www.codefactor.io/repository/github/anonymousehucker29/infoweather/badge" alt="CodeFactor">
+</div>
 
 ---
 
-### The bot is made using Node.js and hosted it through <a href="https://www.glitch.com" target="_blank">Glitch</a>
+### The bot is made using Node.js and hosted it through [Glitch](https://www.glitch.com).
 
 *Note: The Facebook page that is where the app is integrated is still not verified in Facebook so the functionalities of the page is exclusively available only to the developer and to the testers.*
 >Connect this app to a verified Meta Business Account. If you don’t have one, you’ll need to create a new Business Account and verify it. Only business admins can complete this step.
