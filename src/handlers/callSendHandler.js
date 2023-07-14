@@ -1,4 +1,4 @@
-import { sendTypingOff } from './typingAndSeenIndicator.js'
+import { sendTypingOff } from './misc/typingAndSeenIndicator.js'
 import dotenv from 'dotenv'
 
 dotenv.config();

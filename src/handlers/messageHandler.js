@@ -3,7 +3,7 @@ import { postbackHandler } from "./postbackHandler.js"
 import { callSendHandler } from "./callSendHandler.js"
 import { delayHandler } from "./delayHandler.js"
 import { userProfileHandler } from "./misc/userProfileHandler.js"
-import { markMessageAsSeen, showTypingIndicator } from "./typingAndSeenIndicator.js"
+import { markMessageAsSeen, showTypingIndicator } from "./misc/typingAndSeenIndicator.js"
 
 export async function messageHandler(sender_psid, received_message, message_id) {
     try {

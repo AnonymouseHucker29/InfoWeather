@@ -1,5 +1,5 @@
 import { callSendHandler } from "./callSendHandler.js"
-import { markMessageAsSeen, showTypingIndicator } from './typingAndSeenIndicator.js'
+import { markMessageAsSeen, showTypingIndicator } from './misc/typingAndSeenIndicator.js'
 
 export async function postbackHandler(sender_psid, received_postback, message_id) {
 
