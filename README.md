@@ -3,7 +3,8 @@
 *<div align="center">A Facebook Messenger bot that provides weather information from OpenWeatherMap based on the user's given location.</div>*
 
 <div align="center">
-<img src="https://www.codefactor.io/repository/github/anonymousehucker29/infoweather/badge" alt="CodeFactor">
+  <img src="https://github.com/AnonymouseHucker29/InfoWeather/actions/workflows/build.yml/badge.svg" alt="Build">
+  <img src="https://www.codefactor.io/repository/github/anonymousehucker29/infoweather/badge" alt="CodeFactor">
 </div>
 
 ---
