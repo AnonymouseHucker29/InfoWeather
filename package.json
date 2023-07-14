@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node --experimental-modules src/main.js",
     "test": "node src/main.js",
-    "dev-test": "node --experimental-modules src/main.js"
+    "dev-test": "node --experimental-modules src/handlers/misc/test.js"
   },
   "repository": {
     "type": "git"
