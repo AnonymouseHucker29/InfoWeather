@@ -5,6 +5,7 @@
 <div align="center">
   <img src="https://github.com/AnonymouseHucker29/InfoWeather/actions/workflows/build.yml/badge.svg" alt="Build">
   <img src="https://www.codefactor.io/repository/github/anonymousehucker29/infoweather/badge" alt="CodeFactor">
+  <img src="https://github.com/AnonymouseHucker29/InfoWeather/actions/workflows/codeql.yml/badge.svg" alt="Code">
 </div>
 
 ---
