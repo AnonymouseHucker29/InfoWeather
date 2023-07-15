@@ -1,7 +1,7 @@
 import { weatherHandler } from "./weatherHandler.js"
 import { postbackHandler } from "./postbackHandler.js"
 import { callSendHandler } from "./callSendHandler.js"
-import { delayHandler } from "./delayHandler.js"
+import { delayHandler } from "./misc/delayHandler.js"
 import { userProfileHandler } from "./misc/userProfileHandler.js"
 import { markMessageAsSeen, showTypingIndicator } from "./misc/typingAndSeenIndicator.js"
 
