@@ -1,7 +1,7 @@
 import { callSendHandler } from './callSendHandler.js'
-import { delayHandler } from './misc/delayHandler.js'
-import { markMessageAsSeen, showTypingIndicator } from './misc/typingAndSeenIndicator.js'
-import { timezoneHandler } from './misc/timezoneHandler.js'
+import { delayHandler } from '../misc/delayHandler.js'
+import { markMessageAsSeen, showTypingIndicator } from '../misc/typingAndSeenIndicator.js'
+import { timezoneHandler } from '../misc/timezoneHandler.js'
 import moment from 'moment-timezone'
 import dotenv from 'dotenv'
 

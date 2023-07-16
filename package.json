@@ -1,6 +1,6 @@
 {
   "name": "infoweather",
-  "version": "1.5.5",
+  "version": "1.5.6",
   "description": "Real-time weather information for your location provided by a bot.",
   "main": "src/main.js",
   "type": "module",
