@@ -1,6 +1,6 @@
-import express from 'express'
-import body_parser from 'body-parser'
-import dotenv from 'dotenv'
+import express from "express";
+import body_parser from "body-parser";
+import dotenv from "dotenv";
 
 dotenv.config();
 
