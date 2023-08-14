@@ -1,7 +1,4 @@
 import { sendTypingOff } from "../misc/typingAndSeenIndicator.js";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 export async function callSendHandler(sender_psid, response) {
   let request_body = {

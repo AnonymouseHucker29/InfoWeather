@@ -4,11 +4,8 @@ import {
   markMessageAsSeen,
   showTypingIndicator,
 } from "../misc/typingAndSeenIndicator.js";
-import dotenv from "dotenv";
 import { fetchWeatherDataByName } from "../sources.js";
 import { tempConverter, miscConverter } from "../misc/conversions.js";
-
-dotenv.config();
 
 export async function weatherHandler(
   sender_psid,

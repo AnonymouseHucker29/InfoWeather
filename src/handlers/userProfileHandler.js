@@ -1,7 +1,3 @@
-import dotenv from "dotenv";
-
-dotenv.config();
-
 export function userProfileHandler(sender_psid) {
   return new Promise(async (resolve, reject) => {
     try {
